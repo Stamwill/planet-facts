@@ -1,0 +1,26 @@
+:root {
+  /* COLORS */
+
+  --white: rgb(255, 255, 255);
+  --gray: rgb(131, 131, 145);
+  --dark-gray: rgb(56, 56, 79);
+  --dark: rgb(7, 7, 36);
+  --blue: rgb(45, 104, 240);
+  --light-blue: rgb(65, 158, 187);
+  --purple: rgb(109, 46, 213);
+  --yellow: rgb(237, 162, 73);
+  --orange: rgb(209, 76, 50);
+  --red: rgb(216, 58, 52);
+  --green: rgb(30, 193, 162);
+  
+  /* Fonts */
+  /* Use spartan with regular 400 or bold 700  */
+  --spartan: "League Spartan", sans-serif;
+  --antonio: "Antonio", sans-serif;
+}
+
+body {
+  font-family: var(--antonio);
+  margin: 0;
+  padding: 0;
+}
