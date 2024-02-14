@@ -34,6 +34,9 @@ body {
 }
 
 .hamburgerOpen {
+  position: absolute;
+  top: 100px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--dark);
@@ -65,6 +68,35 @@ body {
   letter-spacing: 2.5px;
   font-size: 20px;
   font-weight: bold;
+}
+
+#planetNavigation{
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+#planetNavbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.planetNavItem {
+  list-style-type: none;
+  font-family: var(--spartan);
+  font-weight: bold;
+  letter-spacing: 1.93px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 0.5rem 0;
+  color: var(--gray);
+  cursor: pointer;
+  border-bottom: 8px solid transparent;
+  margin-bottom: -15px;
+  padding-bottom: 8px;
+}
+
+.planetNavItem:hover {
+  border-bottom: 5px solid var(--light-blue);
 }
 
 
