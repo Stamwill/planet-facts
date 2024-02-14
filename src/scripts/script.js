@@ -28,7 +28,21 @@ const openHamburgerMenu = () => {
 }
 
 const createHamburgerLink = (planet) => {
-  hamburgerNav.appendChild(planet)
+  let container = document.createElement('div')
+  let navItem = document.createElement('div')
+  let navItemText = document.createElement('h3')
+  let img = document.createElement('img')
+  img.src = '../assets/icon-chevron.svg'
+
+  container.classList.add('hamburgerItemContainer')
+  navItem.classList.add('hamburgerItem')
+  navItemText.classList.add('hamburgerItemText')
+
+  hamburgerNav.appendChild(container)
+  container.appendChild(navItem)
+  navItem.appendChild(navItemText)
+  navItem.appendChild(img)
+  navItemText.appendChild(planet)
 }
 
 openHamburgerMenu()
