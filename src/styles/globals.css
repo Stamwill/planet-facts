@@ -34,6 +34,38 @@ body {
 }
 
 .hamburgerOpen {
-  display: block;
+  display: flex;
   flex-direction: column;
+  background-color: var(--dark);
 }
+
+.hamburgerItemContainer {
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.hamburgerItemContainer:not(:last-child) {
+  border-bottom: 1px solid var(--dark-gray);
+}
+
+.hamburgerItemContainer:first-child {
+  margin-top: 2rem;
+}
+
+.hamburgerItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.hamburgerItemText {
+  font-family: var(--spartan);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
