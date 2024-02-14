@@ -28,3 +28,12 @@ body {
   background-color: var(--dark);
   color: white;
 }
+
+.hamburgerNav {
+  display: none;
+}
+
+.hamburgerOpen {
+  display: block;
+  flex-direction: column;
+}
