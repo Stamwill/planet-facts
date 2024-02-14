@@ -1,0 +1,14 @@
+#navbar {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+#navLogo {
+ 
+}
+
+#navigation {
+  display: flex;
+  list-style-type: none;
+}
