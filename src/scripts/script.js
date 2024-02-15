@@ -1,18 +1,29 @@
-const main = document.getElementById('main')
-
 const hamburgerNav = document.getElementById('hamburgerNav')
-
 const hamburger = document.getElementById('hamburger')
 
-hamburger.addEventListener('click', () => {
-  if (hamburgerNav.classList == 'hamburgerNav') {
-    hamburgerNav.classList.remove('hamburgerNav')
-    hamburgerNav.classList.add('hamburgerOpen')
-  } else {
-    hamburgerNav.classList.remove('hamburgerOpen')
-    hamburgerNav.classList.add('hamburgerNav')
-  }
-})
+// Main elements
+const main = document.getElementById('main')
+const planetPage = document.getElementById('planetPage')
+
+// Planet navigation
+const planetNav = document.getElementById('planetNavigation')
+const planetNavBar = document.getElementById('planetNavbar')
+const planetNavItem = document.querySelector('planetNavItem')
+
+// Planet page image
+const planetImg = document.getElementById('planetImg')
+
+// Planet block
+const planetBlock = document.querySelector('planetBlock')
+const planetName = document.querySelector('planetName')
+const planetNavDescription = document.querySelector('planetNavDescription')
+const wikiLink = document.querySelector('wikiLink')
+
+// Data panel
+const dataPanel = document.querySelector('dataPanel')
+const dataItem = document.querySelector('dataItem')
+const dataDescription = document.querySelector('dataDescription')
+const dataMeasurement = document.querySelector('dataMeasurement')
 
 const openHamburgerMenu = () => {
   fetch('../../data.json')
@@ -46,3 +57,14 @@ const createHamburgerLink = (planet) => {
 }
 
 openHamburgerMenu()
+
+// Event Handlers
+hamburger.addEventListener('click', () => {
+  if (hamburgerNav.classList == 'hamburgerNav') {
+    hamburgerNav.classList.remove('hamburgerNav')
+    hamburgerNav.classList.add('hamburgerOpen')
+  } else {
+    hamburgerNav.classList.remove('hamburgerOpen')
+    hamburgerNav.classList.add('hamburgerNav')
+  }
+})
