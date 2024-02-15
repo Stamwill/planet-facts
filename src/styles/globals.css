@@ -91,13 +91,39 @@ body {
   color: var(--gray);
   cursor: pointer;
   border-bottom: 8px solid transparent;
-  margin-bottom: -15px;
+  margin-bottom: -16px;
   padding-bottom: 8px;
 }
 
 .planetNavItem:hover {
   border-bottom: 5px solid var(--light-blue);
 }
+
+/* Planet page styling */
+
+/* Navigation */
+#planetPage {
+}
+
+#planetNavigation{}
+
+#planetNavbar{}
+
+
+/* planet page image */
+#planetImg {}
+
+/* Planet block */
+.planetBlock{}
+.planetName{}
+.planetNavDescription{}
+.wikiLink{}
+
+/* Planet data panel */
+.dataPanel{}
+.dataItem{}
+.dataDescription{}
+.dataMeasurement{}
 
 
 
