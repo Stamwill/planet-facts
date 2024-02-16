@@ -124,6 +124,22 @@ body {
   padding: 0 2rem;
 }
 
+#planetImageContainer {
+  position: relative;
+}
+
+.secondPlanetImg:nth-child(2) {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  width: 100px;
+}
+
+/* #planetImageContainer:nth-child(1) {
+  position: absolute;
+} */
+
 #planetName {
   text-transform: uppercase;
   font-size: 35px;
