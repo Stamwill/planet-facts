@@ -128,7 +128,12 @@ body {
   text-transform: uppercase;
   font-size: 35px;
 }
-.planetNavDescription{}
+#planetNavDescription{
+  text-align: center;
+  font-family: var(--spartan);
+  font-size: 14px;
+  line-height: 22px;;
+}
 
 #wikiLink:hover {
   cursor: pointer;
