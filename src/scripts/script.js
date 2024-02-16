@@ -61,7 +61,7 @@ const fetchPlanetData = () => {
         let navDescription = json[i].overview.content
         let wikipediaLink = json[i].overview.source
         let planetImg = json[i].images.planet
-        console.log(wikipediaLink)
+
         createPlanetPage(name, navDescription, wikipediaLink, planetImg)
 
         let dataRot = json[i].rotation
@@ -82,7 +82,7 @@ const createPlanetPage = (name, navDescription, wikipediaLink, planetImg) => {
 
   planetName.textContent = name
   planetNavDescription.textContent = navDescription
-  wikiLink.src = wikipediaLink
+  wikiLink.href = wikipediaLink
   planetImage.src = planetImg
 }
 
