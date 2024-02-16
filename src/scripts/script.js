@@ -1,3 +1,4 @@
+// Hamburger elements
 const hamburgerNav = document.getElementById('hamburgerNav')
 const hamburger = document.getElementById('hamburger')
 
@@ -10,20 +11,12 @@ const planetNav = document.getElementById('planetNavigation')
 const planetNavBar = document.getElementById('planetNavbar')
 const planetNavItem = document.querySelector('planetNavItem')
 
-// Planet page image
-const planetImg = document.getElementById('planetImg')
-
 // Planet block
 const planetBlock = document.querySelector('planetBlock')
-const planetName = document.querySelector('planetName')
-const planetNavDescription = document.querySelector('planetNavDescription')
-const wikiLink = document.querySelector('wikiLink')
 
 // Data panel
 const dataPanel = document.querySelector('dataPanel')
 const dataItem = document.querySelector('dataItem')
-const dataDescription = document.querySelector('dataDescription')
-const dataMeasurement = document.querySelector('dataMeasurement')
 
 const openHamburgerMenu = () => {
   fetch('../../data.json')
@@ -37,6 +30,7 @@ const openHamburgerMenu = () => {
       }
     })
 }
+openHamburgerMenu()
 
 const createHamburgerLink = (planet) => {
   let container = document.createElement('div')
@@ -56,7 +50,53 @@ const createHamburgerLink = (planet) => {
   navItemText.appendChild(planet)
 }
 
-openHamburgerMenu()
+const fetchPlanetData = () => {
+  fetch('../../data.json')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (json) {
+      for (let i = 0; i < 1; i++) {
+        let name = json[i].name
+        let navDescription = json[i].overview.content
+        let wikipediaLink = json[i].overview.source
+        let planetImg = json[i].images.planet
+        console.log(wikipediaLink)
+        createPlanetPage(name, navDescription, wikipediaLink, planetImg)
+
+        let dataRot = json[i].rotation
+        let dataRev = json[i].revolution
+        let dataRad = json[i].radius
+        let dataTem = json[i].temperature
+        createPlanetMeasurements(dataRot, dataRev, dataRad, dataTem)
+      }
+    })
+}
+
+fetchPlanetData()
+const createPlanetPage = (name, navDescription, wikipediaLink, planetImg) => {
+  const planetName = document.getElementById('planetName')
+  const planetNavDescription = document.getElementById('planetNavDescription')
+  const wikiLink = document.getElementById('wikiLink')
+  const planetImage = document.getElementById('planetImg')
+
+  planetName.textContent = name
+  planetNavDescription.textContent = navDescription
+  wikiLink.src = wikipediaLink
+  planetImage.src = planetImg
+}
+
+const createPlanetMeasurements = (dataRot, dataRev, dataRad, dataTem) => {
+  const dataRotation = document.getElementById('dataRotation')
+  const dataRevolution = document.getElementById('dataRevolution')
+  const dataRadius = document.getElementById('dataRadius')
+  const dataTemp = document.getElementById('dataTemp')
+
+  dataRotation.textContent = dataRot
+  dataRevolution.textContent = dataRev
+  dataRadius.textContent = dataRad
+  dataTemp.textContent = dataTem
+}
 
 // Event Handlers
 hamburger.addEventListener('click', () => {
