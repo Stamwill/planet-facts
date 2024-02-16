@@ -111,19 +111,56 @@ body {
 
 
 /* planet page image */
-#planetImg {}
+#planetImg {
+  margin-bottom: 2rem;
+}
 
 /* Planet block */
-.planetBlock{}
-.planetName{}
+.planetBlock { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+#planetName {
+  text-transform: uppercase;
+  font-size: 35px;
+}
 .planetNavDescription{}
-.wikiLink{}
+
+#wikiLink:hover {
+  cursor: pointer;
+}
 
 /* Planet data panel */
-.dataPanel{}
-.dataItem{}
-.dataDescription{}
-.dataMeasurement{}
+.dataPanel{
+  margin-top: 2rem;
+  padding: 0 2rem;
+}
+
+.dataItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--gray);
+  margin: 0.775rem 0;
+  padding: 1rem;
+}
+
+.dataDescription{
+  font-family: var(--spartan);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  color: var(--dark-gray);
+  margin: 0;
+}
+
+.dataMeasurement{
+  margin: 0;  
+}
 
 
 
