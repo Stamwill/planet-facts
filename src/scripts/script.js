@@ -20,6 +20,11 @@ const openHamburgerMenu = () => {
     })
 }
 
+hamburger.addEventListener('click', () => {
+  hamburgerNav.classList.toggle('hamburgerNav')
+  hamburgerNav.classList.toggle('hamburgerOpen')
+})
+
 openHamburgerMenu()
 
 const createHamburgerLink = (planet, index) => {
@@ -179,8 +184,3 @@ const getTabContent = (planet, tab) => {
 let currentPlanet
 
 fetchPlanetData()
-
-hamburger.addEventListener('click', () => {
-  hamburgerNav.classList.toggle('hamburgerNav')
-  hamburgerNav.classList.toggle('hamburgerOpen')
-})
