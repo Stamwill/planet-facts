@@ -133,7 +133,7 @@ const createPlanetPage = (name, navDescription, wikipediaLink, planet, selectedT
   imagesForTab.forEach((imageUrl) => {
     const imageElement = document.createElement('img')
     imageElement.src = imageUrl
-    imageElement.classList.add('secondPlanetImg')
+    imageElement.classList.add('planetImg')
     planetImageContainer.appendChild(imageElement)
   })
 }
