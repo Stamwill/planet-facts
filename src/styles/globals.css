@@ -109,12 +109,6 @@ body {
 
 #planetNavbar{}
 
-
-/* planet page image */
-#planetImg {
-  margin-bottom: 2rem;
-}
-
 /* Planet block */
 .planetBlock { 
   display: flex;
@@ -124,21 +118,25 @@ body {
   padding: 0 2rem;
 }
 
+/* planet page image */
+
 #planetImageContainer {
   position: relative;
 }
 
-.secondPlanetImg:nth-child(2) {
+.planetImg {
+  margin-bottom: 2rem;
+  max-width: 250px;
+  min-width: 150px;
+}
+
+.planetImg:nth-child(2) {
   position: absolute;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -0%);
   width: 100px;
 }
-
-/* #planetImageContainer:nth-child(1) {
-  position: absolute;
-} */
 
 #planetName {
   text-transform: uppercase;
