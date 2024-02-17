@@ -147,6 +147,8 @@ body {
   font-family: var(--spartan);
   font-size: 14px;
   line-height: 22px;;
+  min-width: 250px;
+  max-width: 500px;
 }
 
 .wikiContainer {
@@ -165,7 +167,9 @@ body {
 
 /* Planet data panel */
 .dataPanel{
-  margin: 3rem 0;
+  min-width: 250px;
+  max-width: 500px;
+  margin: 3rem auto;
   padding: 0 2rem;
 }
 
