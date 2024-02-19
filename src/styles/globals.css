@@ -125,7 +125,10 @@ body {
 /* planet page image */
 
 #planetImageContainer {
+  display: flex;
+  justify-content: center;
   position: relative;
+  margin-top: 4rem;
 }
 
 .planetImg {
@@ -161,8 +164,8 @@ body {
   
 }
 
-#wikiLink {color: var(--gray);
-  /* text-decoration: none; */
+#wikiLink {
+  color: var(--gray);
 }
 
 #wikiLink:hover {
@@ -215,32 +218,53 @@ body {
   #planetNavbar {
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 0;
   }
 
   .planetNavItem {
+    color: var(--white);
     border: 1px solid var(--dark-gray);
     margin: 1rem 0;
     padding: 1.5rem 1rem;
-    width: 300px;
+    width: 80%;
+  }
+
+  .planetNavItem:first-child {
+    margin-top: 0.775rem;
+  }
+
+  .planetNavItem:hover {
+    border: 1px solid transparent;
+    background-color: var(--light-blue);
   }
 
   #planetImageContainer {
-    margin-top: 2rem;
     order: -1;
     flex: 0 0 100%;
   }
 
+  #planetName {
+    margin-top: 0;
+    font-size: 50px;
+  }
+
   .planetBlock {
+    align-items: flex-start;
     width: 40%;
     margin-top: 0;
+  }
 
+  #planetNavDescription {
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left;
+    margin-bottom: 2rem;
   }
 
   .dataPanel {
     display: flex;
     justify-content: space-between;
     order: 2;
-    margin: 3rem 0;
     max-width: 100%;
   }
   
@@ -248,11 +272,18 @@ body {
     flex-direction: column;
     align-items: flex-start;
     width: 150px;
-    padding: 2rem 2.5rem;
+    padding: 1rem 2.5rem 1rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .dataItem:first-child{
+    margin-left: 0;
+  }
+  .dataItem:last-child{
+    margin-right: 0;
   }
 
   .dataDescription {
-    font-size: 16px;
     letter-spacing: 0.73px;
     font-weight: bold;
   }
