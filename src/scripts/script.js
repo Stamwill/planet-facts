@@ -44,7 +44,6 @@ const createHamburgerLink = (planet, index) => {
   navItem.appendChild(img)
   navItemText.appendChild(planet)
 
-  // Add click event listener to navigate to the selected planet
   navItem.addEventListener('click', () => {
     navigateToPlanet(index)
 
@@ -71,7 +70,6 @@ const fetchPlanetData = () => {
       const initialPlanet = json[0]
       displayPlanetData(initialPlanet)
 
-      // Attach click event listener to each navigation item
       const navItems = document.querySelectorAll('.navItem')
       navItems.forEach((item, index) => {
         item.addEventListener('click', () => {
@@ -80,7 +78,6 @@ const fetchPlanetData = () => {
         })
       })
 
-      // Attach click event listener to each planetNavbar item
       const planetNavItems = document.querySelectorAll('.planetNavItem')
       planetNavItems.forEach((item) => {
         item.addEventListener('click', () => {
@@ -144,15 +141,14 @@ const createPlanetPage = (name, navDescription, wikipediaLink, planet, selectedT
 }
 
 const getImagesForTab = (planet, tab) => {
-  switch (tab) {
-    case 'Overview':
-      return [planet.images.planet]
-    case 'Structure':
-      return [planet.images.internal]
-    case 'Surface':
-      return [planet.images.internal, planet.images.geology]
-    default:
-      return [planet.images.planet]
+  if (tab === 'Overview') {
+    return [planet.images.planet]
+  } else if (tab === 'Structure' || tab === '02 Internal Structure') {
+    return [planet.images.internal]
+  } else if (tab === 'Surface' || tab === '03 Surface Geology') {
+    return [planet.images.internal, planet.images.geology]
+  } else {
+    return [planet.images.planet]
   }
 }
 
@@ -169,18 +165,38 @@ const createPlanetMeasurements = (dataRot, dataRev, dataRad, dataTem) => {
 }
 
 const getTabContent = (planet, tab) => {
-  switch (tab) {
-    case 'Overview':
-      return planet.overview.content
-    case 'Structure':
-      return planet.structure.content
-    case 'Surface':
-      return planet.geology.content
-    default:
-      return planet.overview.content
+  if (tab === 'Overview') {
+    return planet.overview.content
+  } else if (tab === 'Structure' || tab == '02 Internal Structure') {
+    return planet.structure.content
+  } else if (tab === 'Surface' || tab == '03 Surface Geology') {
+    return planet.geology.content
+  } else {
+    return planet.overview.content
   }
 }
 
-let currentPlanet
+// let currentPlanet
 
 fetchPlanetData()
+
+document.addEventListener('DOMContentLoaded', function () {
+  const planetOverview = document.getElementById('planetOverview')
+  const planetStructure = document.getElementById('planetStructure')
+  const planetSurface = document.getElementById('planetSurface')
+
+  function updatePlanetNavbar() {
+    if (window.innerWidth < 800) {
+      planetOverview.textContent = 'Overview'
+      planetStructure.textContent = 'Structure'
+      planetSurface.textContent = 'Surface'
+    } else if (window.innerWidth >= 800) {
+      planetOverview.textContent = '01 Overview'
+      planetStructure.textContent = '02 Internal Structure'
+      planetSurface.textContent = '03 Surface Geology'
+    }
+  }
+  updatePlanetNavbar()
+
+  window.addEventListener('resize', updatePlanetNavbar)
+})
