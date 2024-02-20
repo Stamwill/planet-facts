@@ -1,22 +1,16 @@
-// Hamburger elements
 const hamburgerNav = document.getElementById('hamburgerNav')
 const hamburger = document.getElementById('hamburger')
-
-// Planet navigation
 const planetNav = document.getElementById('planetNavigation')
-const planetNavBar = document.getElementById('planetNavbar')
-const planetNavItem = document.querySelectorAll('planetNavbar')
+const planetNavItem = document.querySelectorAll('.planetNavItem')
 
 const openHamburgerMenu = () => {
   fetch('../../data.json')
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (json) {
-      for (let i = 0; i < json.length; i++) {
-        let planet = document.createTextNode(`${json[i].name}`)
-        createHamburgerLink(planet, i)
-      }
+    .then((response) => response.json())
+    .then((json) => {
+      json.forEach((planet, index) => {
+        const planetTextNode = document.createTextNode(planet.name)
+        createHamburgerLink(planetTextNode, index)
+      })
     })
 }
 
@@ -27,68 +21,69 @@ hamburger.addEventListener('click', () => {
 
 openHamburgerMenu()
 
+const navigateToPlanet = async (index) => {
+  const response = await fetch('../../data.json')
+  const json = await response.json()
+  const selectedPlanet = json[index]
+  displayPlanetData(selectedPlanet)
+}
+
 const createHamburgerLink = (planet, index) => {
-  let container = document.createElement('div')
-  let navItem = document.createElement('div')
-  let navItemText = document.createElement('h3')
-  let img = document.createElement('img')
+  const container = document.createElement('div')
+  const navItem = document.createElement('div')
+  const navItemText = document.createElement('h3')
+  const img = document.createElement('img')
   img.src = '../assets/icon-chevron.svg'
 
   container.classList.add('hamburgerItemContainer')
   navItem.classList.add('hamburgerItem')
   navItemText.classList.add('hamburgerItemText')
 
-  hamburgerNav.appendChild(container)
   container.appendChild(navItem)
   navItem.appendChild(navItemText)
   navItem.appendChild(img)
   navItemText.appendChild(planet)
 
   navItem.addEventListener('click', () => {
-    navigateToPlanet(index)
+    navigateToPlanet(index).then(() => {
+      setTabsBackgroundColor(currentPlanet.name)
+    })
 
     hamburgerNav.classList.remove('hamburgerOpen')
     hamburgerNav.classList.add('hamburgerNav')
   })
+
+  hamburgerNav.appendChild(container)
 }
 
-const navigateToPlanet = (index) => {
-  fetch('../../data.json')
-    .then(function (response) {
-      return response.json()
-    })
-    .then(function (json) {
-      const selectedPlanet = json[index]
-      displayPlanetData(selectedPlanet)
-    })
-}
+const fetchPlanetData = async () => {
+  try {
+    const response = await fetch('../../data.json')
+    const json = await response.json()
+    const initialPlanet = json[0]
+    displayPlanetData(initialPlanet)
 
-const fetchPlanetData = () => {
-  return fetch('../../data.json')
-    .then((response) => response.json())
-    .then((json) => {
-      const initialPlanet = json[0]
-      displayPlanetData(initialPlanet)
-
-      const navItems = document.querySelectorAll('.navItem')
-      navItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-          const selectedPlanet = json[index]
-          displayPlanetData(selectedPlanet)
-        })
-      })
-
-      const planetNavItems = document.querySelectorAll('.planetNavItem')
-      planetNavItems.forEach((item) => {
-        item.addEventListener('click', () => {
-          const selectedTab = item.textContent
-          displayPlanetData(currentPlanet, selectedTab)
-        })
+    const navItems = document.querySelectorAll('.navItem')
+    navItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        const selectedPlanet = json[index]
+        displayPlanetData(selectedPlanet)
       })
     })
-    .catch((error) => {
-      console.error('Error fetching planet data:', error)
+
+    const planetNavItems = document.querySelectorAll('.planetNavItem')
+    planetNavItems.forEach((item) => {
+      item.addEventListener('click', (event) => {
+        event.preventDefault()
+        const selectedTab = item.textContent.trim()
+        const selectedPlanet = currentPlanet.name
+        displayPlanetData(currentPlanet, selectedTab)
+        setTabsBackgroundColor(selectedPlanet, selectedTab)
+      })
     })
+  } catch (error) {
+    console.error('Error fetching planet data:', error)
+  }
 }
 
 const displayPlanetData = (planet, selectedTab) => {
@@ -114,6 +109,7 @@ const displayPlanetData = (planet, selectedTab) => {
   createPlanetMeasurements(dataRot, dataRev, dataRad, dataTem)
 
   currentPlanet = planet
+  setTabsBackgroundColor(currentPlanet.name, selectedTab || 'Overview')
 }
 
 const createPlanetPage = (name, navDescription, wikipediaLink, planet, selectedTab) => {
@@ -128,10 +124,8 @@ const createPlanetPage = (name, navDescription, wikipediaLink, planet, selectedT
   planetNavDescription.innerHTML = navDescription
   wikiLink.href = wikipediaLink
 
-  // Clear previous images
   planetImageContainer.innerHTML = ''
 
-  // Append new images to the container
   imagesForTab.forEach((imageUrl) => {
     const imageElement = document.createElement('img')
     imageElement.src = imageUrl
@@ -176,27 +170,55 @@ const getTabContent = (planet, tab) => {
   }
 }
 
-// let currentPlanet
-
 fetchPlanetData()
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   const planetOverview = document.getElementById('planetOverview')
   const planetStructure = document.getElementById('planetStructure')
   const planetSurface = document.getElementById('planetSurface')
 
-  function updatePlanetNavbar() {
+  const updatePlanetNavbar = () => {
     if (window.innerWidth < 800) {
       planetOverview.textContent = 'Overview'
       planetStructure.textContent = 'Structure'
       planetSurface.textContent = 'Surface'
+      setTabsBackgroundColor()
     } else if (window.innerWidth >= 800) {
       planetOverview.textContent = '01 Overview'
       planetStructure.textContent = '02 Internal Structure'
       planetSurface.textContent = '03 Surface Geology'
     }
   }
+
   updatePlanetNavbar()
 
   window.addEventListener('resize', updatePlanetNavbar)
 })
+
+const setTabsBackgroundColor = (planet, activeTab) => {
+  const tabs = document.querySelectorAll('.planetNavItem')
+
+  const planetColorMap = {
+    Mercury: '--light-blue',
+    Venus: '--yellow',
+    Earth: '--purple',
+    Mars: '--orange',
+    Jupiter: '--red',
+    Saturn: '--orange',
+    Uranus: '--green',
+    Neptune: '--blue',
+  }
+
+  const planetColorVariable = planetColorMap[planet]
+
+  tabs.forEach((tab) => {
+    const isCurrentTab = tab.textContent.trim() === activeTab
+    const backgroundColor = isCurrentTab ? `var(${planetColorVariable})` : 'unset'
+
+    tab.style.backgroundColor = backgroundColor
+
+    if (window.innerWidth < 800) {
+      tab.style.backgroundColor = 'unset'
+    }
+  })
+}
