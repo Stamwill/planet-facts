@@ -272,6 +272,7 @@ body {
     justify-content: space-evenly;
     width: 100%;
     margin-top: 5rem;
+    padding: 0 1rem;
   }
 
   .planetDescContainer {
@@ -298,8 +299,7 @@ body {
     justify-content: space-between;
     order: 2;
     min-width: 250px;
-    max-width: 500px;
-    max-width: 100%;
+    max-width: 650px;
   }
   
   .dataItem {
@@ -388,6 +388,10 @@ body {
 
   .secondaryNav {
     width: 70%;
+  }
+
+  .dataPanel {
+    max-width: 100%;
   }
 
   .dataItem {
