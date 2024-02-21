@@ -23,7 +23,7 @@ body {
   font-family: var(--antonio);
   margin: 0;
   padding: 0;
-  background-image: url(/assets/background-stars.svg);
+  background-image: url(../assets/background-stars.svg);
   background-size: cover;
   background-color: var(--dark);
   color: white;
