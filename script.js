@@ -22,7 +22,7 @@ hamburger.addEventListener('click', () => {
 openHamburgerMenu()
 
 const navigateToPlanet = async (index) => {
-  const response = await fetch('../../data.json')
+  const response = await fetch('data.json')
   const json = await response.json()
   const selectedPlanet = json[index]
   displayPlanetData(selectedPlanet)
@@ -58,7 +58,7 @@ const createHamburgerLink = (planet, index) => {
 
 const fetchPlanetData = async () => {
   try {
-    const response = await fetch('../../data.json')
+    const response = await fetch('data.json')
     const json = await response.json()
     const initialPlanet = json[0]
     displayPlanetData(initialPlanet)
