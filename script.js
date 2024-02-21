@@ -33,7 +33,7 @@ const createHamburgerLink = (planet, index) => {
   const navItem = document.createElement('div')
   const navItemText = document.createElement('h3')
   const img = document.createElement('img')
-  img.src = 'src/assets/icon-chevron.svg'
+  img.src = 'assets/icon-chevron.svg'
 
   container.classList.add('hamburgerItemContainer')
   navItem.classList.add('hamburgerItem')
